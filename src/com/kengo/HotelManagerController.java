@@ -45,6 +45,13 @@ public class HotelManagerController {
 
 	}
 	
+//	private void checkIn() {
+//		System.out.println("= Check in=");
+//		System.out.println();
+//		
+//		System.out.println("How many Guests would you like to add?");
+//	}
+	
 	private void checkOut() {
 		System.out.println("= Check out =");
 		System.out.println();
@@ -56,9 +63,11 @@ public class HotelManagerController {
 			
 			int i = Integer.parseInt(selectedRoom) - 1;
 			
-			GuestOccupancy[i] = 0;
 			System.out.println();
-			System.out.println("Check out for Room " + selectedRoom + " successful");
+			if(GuestOccupancy[i] != 0) {
+				GuestOccupancy[i] = 0;
+				System.out.println("Check out for Room " + selectedRoom + " successful");
+			}else System.out.println("Error - The room is already Vacant");
 			
 			Thread.sleep(1000);
 			
