@@ -14,6 +14,12 @@ public class HotelManagerApp {
 		System.out.println("= Hotel Manager App =");
 		System.out.println("=====================");
 		System.out.println();
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
