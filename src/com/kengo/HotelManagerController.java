@@ -23,7 +23,8 @@ public class HotelManagerController {
 			String selectedOption = input.next();
 
 			if(selectedOption.equals("1")) {
-				System.out.println("option 1");
+				System.out.println();
+				checkIn();
 			}else if(selectedOption.equals("2")) {
 				System.out.println();
 				checkOut();
@@ -45,12 +46,39 @@ public class HotelManagerController {
 
 	}
 	
-//	private void checkIn() {
-//		System.out.println("= Check in=");
-//		System.out.println();
-//		
-//		System.out.println("How many Guests would you like to add?");
-//	}
+	private void checkIn() {
+		System.out.println("= Check in=");
+		System.out.println();
+		
+		
+		try {
+			System.out.println("How many guests would you like to add?");
+			System.out.print("Guests : ");
+			String guestNumber = input.next();
+			
+			System.out.println("Which room would you like to check them in to?");
+			System.out.print("Room : ");
+			String roomNumber = input.next();
+			
+			int i = Integer.parseInt(roomNumber) - 1;
+			
+			if(GuestOccupancy[i] == 0) {
+				GuestOccupancy[i] = Integer.parseInt(guestNumber);
+				System.out.println("Successfully checked in " + guestNumber + " guests into Room " 
+				+ roomNumber + ".");
+			}else System.out.println("Error - This room is occupied");
+			
+			Thread.sleep(1000);
+			
+			System.out.println();
+			anotherOption();
+		}catch(Exception e) {
+			System.out.println("An error has occured, please try again.");
+			options();
+		}
+		
+		
+	}
 	
 	private void checkOut() {
 		System.out.println("= Check out =");
@@ -66,8 +94,8 @@ public class HotelManagerController {
 			System.out.println();
 			if(GuestOccupancy[i] != 0) {
 				GuestOccupancy[i] = 0;
-				System.out.println("Check out for Room " + selectedRoom + " successful");
-			}else System.out.println("Error - The room is already Vacant");
+				System.out.println("Check out for Room " + selectedRoom + " successful.");
+			}else System.out.println("Error - The room is already Vacant.");
 			
 			Thread.sleep(1000);
 			
